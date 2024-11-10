@@ -1,0 +1,108 @@
+
+<button routerLink="/structural-dir" type="button" class="btn bg-info">Navigate to Structureal Dir</button>
+<div>
+    <div class="row">
+        <div class="col-3 ml-3 pt-3">
+            <button class="btn btn-primary" (click)="btnFn1('welcome button')">welcome!</button>
+        </div>
+        <div class="col-3 ml-3 pt-3">
+            <button class="btn btn-success" (click)="btnFn2()">Hello!</button>
+        </div>
+       
+    </div>    
+</div>
+
+<div class="row">
+    <div class="col-6">
+        <h1>One way data binding</h1>
+        <div class="row">
+            <div class="col-6">
+                <h3>.ts to .html file : Interpolation, Property binding</h3>
+                <br />
+                firstName => {{firstName}}
+                <br />
+                cuurent date => {{currentDate}}
+                <br />
+                <input type="text" [value]="isTrue" placeholder="example.."/>
+                <br />
+                <input [type]="inputType" />
+                <input [type]="inputType2" />
+                <br />
+                <input [type]="isNum" />
+                <br />
+                <input [type]="isNum" [value]="checkNum" placeholder="number.."/>
+                <br />
+                <textarea name="raja" [rows]="noofrows"></textarea>
+            </div>
+            <div class="col-6">
+                <h3>.html to .ts file Event binding</h3>
+                <div class="col-3">
+                    <input type="text" (blur)="changeEvent($event)" [value]="subString" placeholder="enter ..">
+                </div>
+                <div class="col-3">
+                    {{subString}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <h1>Two way data binding using Ng Model</h1>
+            <div class="row">
+                <div class="col-3">
+                    <input type="text" [(ngModel)]="addString" placeholder="enter..">
+                </div>
+                <div class="col-3">
+                    {{addString}}
+                </div>
+            </div>
+
+            <div class="row pt-3">
+                <div class="col-3">
+                    <label for="" >Name</label>
+                    <input type="text" [(ngModel)]="studentobj.name" class="form-control">
+                </div>
+                <div class="col-3">
+                    <label for="" >City</label>
+                    <input type="text" [(ngModel)]="studentobj.city" class="form-control">
+                </div>
+            </div>
+            <div class="row pt-3">
+                <div class="col-6">
+                    <label for="" >Address</label>
+                    <textarea type="text" [(ngModel)]="studentobj.address" class="form-control"></textarea>
+                </div>
+            </div>
+            <br />
+            <div>
+                <p>{{studentobj.name}} -- {{studentobj.city}} -- {{studentobj.address}}</p>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <label> chage event for Drop Down</label>
+                    <br />
+                    <select (change)="btnFn2()">
+                        <option >Country</option>
+                        <option value="India">India</option>
+                        <option value="USA">USA</option>
+                    </select>
+                </div>
+                <div class="colo-6">
+                    <label> chage event for text</label>
+                    <br />
+                    <input type="text" (change)="btnFn2()" placeholder="enter city..">
+                </div>
+                <div class="colo-6">
+                    <label> ngModelChange event for ngmodel binding text </label> <br />
+                    <input type="text" [(ngModel)]="addString" (ngModelChange)="btnFn2()" placeholder="enter city..">
+                </div>  
+            </div>
+    </div>
+</div> 
+
+<!-- <div class="row mt-5">
+    <div class="col-12 text-center">
+        <button type="button" class="btn btn-primary m-2">Primary Button</button>
+        <button type="button" class="btn btn-secondary m-2">Secondary Button</button>
+        <button type="button" class="btn btn-success m-2">Success Button</button>
+    </div>
+</div> -->

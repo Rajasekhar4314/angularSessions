@@ -1,0 +1,55 @@
+
+<div class="container mt-5">
+    <h2 class="text-center">Employee Form</h2>
+    <form (submit)="onSave()" #formobj="ngForm">
+        <!-- Name Field -->
+        <div class="mb-3">
+            <label for="name" class="form-label" >Name <span class="text-danger">*</span></label>
+            <input type="text" name="name" required #empname="ngModel" [(ngModel)]="employeeObj.name" [ngStyle]="{'border-color': (empname.touched || empname.dirty) && empname.errors?.['required'] ?'red':''}"  class="form-control" placeholder="Enter employee's name">
+            <div class="text-danger" *ngIf="empname.touched || empname.dirty">
+                <!-- {{empname.errors | json}} -->
+                <span *ngIf = "empname.errors?.['required']">this is required</span>
+            </div>
+        </div>
+
+        <!-- Email Field -->
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email"  [(ngModel)]="employeeObj.email" class="form-control" id="email" placeholder="Enter employee's email">
+        </div>
+
+        <!-- contact -->
+        <div class="mb-3">
+            <label for="contact" class="form-label">Contact</label>
+            <input type="text" name="contact"  required  #empcontact="ngModel" pattern="^[0-9]*$" minlength="10" maxlength="10"  [(ngModel)]="employeeObj.contact" class="form-control" id="contact" placeholder="Enter employee's contact">
+           <div class="text-danger" *ngIf="empcontact.touched || empcontact.dirty">
+                <!-- {{empcontact.errors | json}} -->
+            <span *ngIf="empcontact.errors?.['required']">this is required</span> <br/>
+            <span *ngIf="empcontact.errors?.['minlength']">min length required</span><br/>
+            <span *ngIf="empcontact.errors?.['pattern']">ONly numbers required</span>
+           </div>
+        </div>
+
+        <!-- Position Field -->
+        <div class="mb-3">
+            <label for="position" class="form-label">Position</label>
+            <input type="text" name="position" [(ngModel)]="employeeObj.position" class="form-control" id="position" placeholder="Enter employee's position">
+        </div>
+
+        <!-- Department Field -->
+        <div class="mb-3">
+            <label for="department" class="form-label">Department</label>
+            <input type="text" name="department" [(ngModel)]="employeeObj.department" class="form-control" id="department" placeholder="Enter department">
+        </div>
+
+        <!-- Date of Joining Field -->
+        <div class="mb-3">
+            <label for="joiningDate" class="form-label">Date of Joining</label>
+            <input type="date" name="joiningDate" [(ngModel)]="employeeObj.joiningDate" class="form-control" id="joiningDate">
+        </div>
+
+        <!-- Submit Button -->
+         {{formobj.invalid}} 
+        <button type="submit" [disabled]="formobj.invalid"  class="btn btn-primary">Submit</button>
+    </form>
+</div>

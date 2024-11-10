@@ -1,0 +1,97 @@
+<!-- <p>template-form works! ---user1 {{userArray.length}} -- userBus {{userBus.length}}</p> -->
+
+<!-- <button type="button" class="btn btn-info" (click)="getUser()">Get Users</button>
+<button type="button" class="btn btn-info" (click)="getBusData()">Get Bus data</button> -->
+
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header bg-success" style="color : white">
+                LIST - <button type="button" class="btn btn-info" (click)="getBusData()">Get Bus data</button> 
+                -- UserBusLength {{userBus.length}}
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>userId</th>
+                            <th>User Name</th>
+                            <th>emailId</th>
+                            <th>role</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of userBus; let sr=index">
+                            <td>{{user.userId}}</td>
+                            <td>{{user.userName}}</td>
+                            <td>{{user.emailId}}</td>
+                            <td>{{user.role}}</td>
+                            <td>
+                                <button type="button" (click)="editUser(user)" class="btn btn-success">Edit</button>
+                                <button type="button" (click)="deleteUser(user.userId)" class="btn btn-danger">Delete</button>
+                            </td>
+                            <!-- <td>{{user.phone}}</td> -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header bg-success">FORM</div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6">
+                        <label for="">User Name</label>
+                        <input type="text" [(ngModel)]="busObj.userName" class="form-control" placeholder="Enter user name" />
+                    </div>
+                    <div class="col-6">
+                        <label for="">Email</label>
+                        <input type="text" [(ngModel)]="busObj.emailId" class="form-control"
+                            placeholder="Enter email" />
+                    </div>
+                    <div class="col-6">
+                        <label for="">Full Name</label>
+                        <input type="text" [(ngModel)]="busObj.fullName" class="form-control" placeholder="Enter full name" />
+                    </div>
+                    <div class="col-6">
+                        <label for="">Role</label>
+                        <input type="text" [(ngModel)]="busObj.role" class="form-control" placeholder="Enter role" />
+                    </div>
+                    <div class="col-6">
+                        <label for="">Password</label>
+                        <input type="text" [(ngModel)]="busObj.password" class="form-control" placeholder="Enter password" />
+                    </div>
+                </div>
+                <div class="row pt-2 ">
+                    <div class="col-12">
+                        <!-- {{busObj | json}} -->
+                        <button *ngIf="busObj.userId === 0" type="button" (click)="saveUser()" class="btn btn-success">Save user</button>
+                        <button *ngIf="busObj.userId !== 0" type="button" (click)="updateUser()" class="btn btn-warning">Update user</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- <div class="row">
+    <div class="col-4">
+        <ul>
+            <li  *ngFor="let user of userArray">
+                {{user.id}} -- {{user.name}} -- {{user.address.city}}
+            </li>
+        </ul>       
+    </div>
+    <div class="col-4">
+        <ul>
+            <li  *ngFor="let user2 of userArray2">
+                {{user2.userId}} -- {{user2.userName}} -- {{user2.fullName}}
+            </li>
+        </ul>
+    </div>
+</div> -->

@@ -1,0 +1,135 @@
+
+<button class="btn bg-primary" (click)="navigateDataBinding()">Navigate to Data Binding</button>
+
+<button class="btn bg-info" (click)="navigateEmployee()">Navigate to Employee </button>
+
+<div class="row pt-3">
+    <div class="col">
+        <div class="bg-success p-3" *ngIf="isDiv1Visible">
+            Div1
+        </div>
+    </div>
+    <div class="col">
+        <div class="bg-danger p-3" *ngIf="div2Visible == 'yes'">
+            Div2
+        </div>
+    </div>
+    <div class="col">
+        {{num1 == num2}} check codition
+        <div class="bg-primary p-3" *ngIf="num1 == num2">
+            Div3
+        </div>
+    </div>
+    <div class="col">
+        <div class="bg-secondary p-3">
+            Div4
+        </div>
+    </div>
+</div>
+<div class="row pt-4">
+    <div class="col-3 text-centre">
+        <button (click)="showDiv1()" class="btn btn-success">Show</button>
+        <button (click)="hideDiv1()" class="btn btn-danger mx-2">Hide</button>
+    </div>
+    <div class="col-3 text-centre">
+        <button (click)="checkDiv2()" class="btn bg-info">Toggle</button>
+    </div>
+    <div class="col-3 text-centre">
+        <input type="text" placeholder="num1" [(ngModel)]="num1">
+        <input type="text" placeholder="num2" [(ngModel)]="num2" >
+    </div>
+    <div class="col-3 text-centre">
+        <button class="btn btn-success">Show</button>
+        <button class="btn btn-danger mx-2">Hide</button>
+    </div>
+</div>
+
+<div class="row pt-5">
+    <h2>Drop down for caste</h2>
+    <div class="col-3">
+        <select [(ngModel)]="otherCaste" class="form-control">
+            <option value="">Select Caste</option>
+            <option value="OBC">OBC</option>
+            <option value="Open">Open</option>
+            <option value="Sc">Sc</option>
+            <option value="Other">Other</option>
+        </select>
+        {{otherCaste}}
+        <input *ngIf="otherCaste =='Other'" type="text" placeholder="enter Other caste..">
+    </div>
+</div>
+
+<!-- NGIF TASKS -->
+
+<!--  TASK1  -->
+<div class="row">
+    <div class="col-6">
+        <input type="radio" [(ngModel)]="selectGender" value="Male" >male
+        <input type="radio" [(ngModel)]="selectGender" value="Female" >female
+        <p *ngIf="selectGender == 'Male'">
+            you have selected male
+        </p>
+        <div *ngIf="selectGender == 'Female'">
+            you have selected female
+        </div>
+    </div>
+</div>
+
+<!--  --> 
+
+<!-- <input type="button" [(ngModel)]="category" value="Mobile"/>mobile
+<input type="button" [(ngModel)]="category" value="Laptop"/>laptop -->
+
+
+
+<div class="row pt-3">
+    {{category}}
+    <div class="col-2 bg-info p-3 mx-2 " [(ngModel)]="category" value="Mobile">
+        mobile
+    </div>
+    <div class="col-2 bg-primary p-3 mx-2" [(ngModel)]="category" value="Laptop">
+        laptop
+    </div>
+    <div class="col-2 bg-secondary p-3 mx-2" [(ngModel)]="category" value="Camera">
+        camera
+    </div>
+    ---{{category}}
+    <p *ngIf="category == 'Mobile'"> Apple, Samsung, MI</p>
+    <p *ngIf="category == 'Laptop'"> Dell, Hp, lenova</p>
+    <p *ngIf="category == 'Camera'"> Dslr, Samsung</p>
+</div>
+
+<!--  -->
+
+
+<div class="row p-3">
+    <div class="col-2 mx-4">
+        <input type="radio" [(ngModel)]="selectCategory" value="Teacher">Teacher
+    </div>
+    <div class="col-2">
+        <input type="radio" [(ngModel)]="selectCategory" value="Sports">Sports Play
+    </div>
+</div>
+<div class="row" >
+    <div class="col-4 p-4" *ngIf="selectCategory == 'Teacher'">
+        <div class="col-3">
+            <label>Education</label>
+            <input type="text" placeholder="enter Education"/>
+        </div>
+        <div class="col-3">
+            <label>Subjects teach</label>
+            <input type="text" placeholder="enter subjects like"/>
+        </div>
+    </div>
+    <div class="col-4 p-4" *ngIf="selectCategory == 'Sports'">
+        <div class="col-3">
+            <label>Education</label>
+            <input type="text" placeholder="enter Education "/>
+        </div>
+        <div class="col-3">
+            <label>Sports play</label>
+            <input type="text" placeholder="enter Sports like"/>
+        </div>
+    </div>
+</div>
+
